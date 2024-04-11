@@ -1,0 +1,96 @@
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body, html {
+            margin: 10px;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            background-color: #a9a9a9;
+        }
+
+        #container {
+            height: 100%;
+            width: 100%;
+        }
+
+        #form {
+            display: block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+        }
+
+        #logline-label {
+            font-weight: bold;
+        }
+
+        #logline {
+            width: 100%;
+        }
+
+        #parse {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 10px 5px 10px;
+        }
+
+        dt, dd {
+            font-family: monospace, monospace, ui-monospace;
+        }
+
+        dt {
+            font-weight: bolder;
+            color: #171717;
+        }
+
+        dd>span {
+            background-color: #ddd;
+            border: 1px solid #171717;
+            padding: 1px 3px 1px 3px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="form">
+    <label id="logline-label" for="logline">Log Line</label>
+    <input name="logline" id="logline" type="text" />
+    <button id="parse">Parse</button>
+    </div>
+    <br />
+    <div>
+        <dl id="output">
+
+        </dl>
+    </div>
+</div>
+<script src="inspector.js"></script>
+<script>
+    document.getElementById("parse").addEventListener("click", (e) => {
+        let data = parseLogLine();
+        let parentEl = document.getElementById("output");
+
+        for (const [key, value] of Object.entries(data)) {
+            let dt = document.createElement("dt");
+            dt.innerText = key;
+            let dd = document.createElement('dd');
+            let span = document.createElement('span')
+            span.innerText = value;
+            dd.appendChild(span);
+
+            parentEl.appendChild(dt);
+            parentEl.appendChild(dd);
+        }
+    })
+</script>
+</body>
+</html>
