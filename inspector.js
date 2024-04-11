@@ -128,14 +128,14 @@ function parseLogLine() {
     if(parseInt(logType) > 255) {
         type = Object.keys(logTable.overlayPlugin)[Object.values(logTable.overlayPlugin).indexOf(logType)];
         if(!logRegexTable.overlayPlugin.hasOwnProperty(type)) {
-            alert('Error: Could not determine log type. Did you copy the line correctly?')
+            alert('Error: Invalid or Unsupported log type. Did you copy the line correctly?')
             return;
         }
         parseRegex = logRegexTable.overlayPlugin[type];
     } else {
         type = Object.keys(logTable.ffxiv)[Object.values(logTable.ffxiv).indexOf(logType)];
         if(!logRegexTable.ffxiv.hasOwnProperty(type)) {
-            alert('Error: Could not determine log type. Did you copy the line correctly?')
+            alert('Error: Invalid or Unsupported log type. Did you copy the line correctly?')
             return;
         }
         parseRegex = logRegexTable.ffxiv[type];
