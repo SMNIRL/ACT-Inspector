@@ -4,13 +4,11 @@
     <title></title>
     <style>
         body, html {
-            margin: 10px;
             font-family: Helvetica, Arial, system-ui;
         }
 
         html {
             height: 100%;
-            width: 100%;
             background-color: #a9a9a9;
         }
 
@@ -43,6 +41,10 @@
             padding: 5px 10px 5px 10px;
         }
 
+        #output {
+            margin-left: 10px
+        }
+
         label {
             font-size: 23px;
         }
@@ -68,8 +70,8 @@
 <body>
 <div id="container">
     <div id="form">
-    <label id="logline-label" for="logline">Log Line</label>
-    <input name="logline" id="logline" type="text" />
+    <label id="logline-label" for="logline">Raw ACT Log Line</label>
+    <input name="logline" id="logline" type="text" placeholder="37|2024-04-10T22:45:22.6660000-04:00|400161BC|Omega|00002A3A|4972015||||||100.05|98.65|0.00|-3.12|2b435285fdccb4ab" />
     <button id="parse">Parse</button>
     </div>
     <br />
