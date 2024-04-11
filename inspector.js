@@ -118,7 +118,6 @@ const logRegexTable = {
 
 function parseLogLine() {
     const logLine = document.getElementById("logline").value;
-    console.log(logLine);
     const typeMatch = logLine.match(typeRegex);
     const logType = typeMatch[0];
     let type;
