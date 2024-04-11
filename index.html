@@ -87,6 +87,7 @@
             return;
         }
         let parentEl = document.getElementById("output");
+        parentEl.innerHTML = null;
 
         for (const [key, value] of Object.entries(data)) {
             let dt = document.createElement("dt");
