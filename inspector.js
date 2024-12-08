@@ -128,14 +128,14 @@ function parseLogLine() {
     if(parseInt(logType) > 255) {
         type = Object.keys(logTable.overlayPlugin)[Object.values(logTable.overlayPlugin).indexOf(logType)];
         if(!logRegexTable.overlayPlugin.hasOwnProperty(type)) {
-            alert('Error: Invalid or Unsupported log type. Did you copy the line correctly?')
+            raiseError('Failed to parse log line. Did you copy the line correctly?');
             return;
         }
         parseRegex = logRegexTable.overlayPlugin[type];
     } else {
         type = Object.keys(logTable.ffxiv)[Object.values(logTable.ffxiv).indexOf(logType)];
         if(!logRegexTable.ffxiv.hasOwnProperty(type)) {
-            alert('Error: Invalid or Unsupported log type. Did you copy the line correctly?')
+            raiseError('Failed to parse log line. Did you copy the line correctly?');
             return;
         }
         parseRegex = logRegexTable.ffxiv[type];
@@ -144,7 +144,7 @@ function parseLogLine() {
     const logMatch = logLine.match(parseRegex);
 
     if(!logMatch || !logMatch.hasOwnProperty('groups')) {
-        alert('Error: Failed to parse log line. Did you copy the line correctly?')
+        raiseError('Failed to parse log line. Did you copy the line correctly?');
     }
 
     let logData = logMatch.groups;

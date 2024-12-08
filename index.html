@@ -45,6 +45,14 @@
             margin-left: 10px
         }
 
+        #error {
+            display: none;
+            background-color: #fdd;
+            border: 1px solid #900;
+            padding: 1px 3px 1px 3px;
+            margin-bottom: 10px;
+        }
+
         label {
             font-size: 23px;
         }
@@ -64,28 +72,49 @@
             padding: 1px 3px 1px 3px;
         }
 
+        .error-header {
+            color: #f00;
+            font-weight: bold;
+            font-size: larger;
+            margin-bottom: 11px;
+        }
 
+        .error:before {
+            content: '• ';
+        }
+
+        .error {
+            color: #000;
+            margin: 0 0 7px 5px;
+        }
     </style>
 </head>
 <body>
 <div id="container">
     <div id="form">
-    <label id="logline-label" for="logline">Raw ACT Log Line</label>
-    <input name="logline" id="logline" type="text" placeholder="37|2024-04-10T22:45:22.6660000-04:00|400161BC|Omega|00002A3A|4972015||||||100.05|98.65|0.00|-3.12|2b435285fdccb4ab" />
-    <button id="parse">Parse</button>
+        <div id="error">
+            <div class="error-header">
+                <span>Error(s) occured while processing your log data:</span>
+            </div>
+        </div>
+        <label id="logline-label" for="logline">Raw ACT Log Line</label>
+        <input name="logline" id="logline" type="text" placeholder="37|2024-04-10T22:45:22.6660000-04:00|400161BC|Omega|00002A3A|4972015||||||100.05|98.65|0.00|-3.12|2b435285fdccb4ab" />
+        <button id="parse">Parse</button>
     </div>
     <br />
     <div>
-        <dl id="output">
-
-        </dl>
+        <dl id="output"></dl>
     </div>
 </div>
+<script src="messageHandler.js"></script>
 <script src="inspector.js"></script>
 <script>
     document.getElementById("parse").addEventListener("click", (e) => {
+        clearErrors();
+
         let data = parseLogLine();
         if(!data) {
+            raiseError('No valid log data was found.');
             return;
         }
         let parentEl = document.getElementById("output");
@@ -102,7 +131,8 @@
             parentEl.appendChild(dt);
             parentEl.appendChild(dd);
         }
-    })
+    });
 </script>
+
 </body>
 </html>
