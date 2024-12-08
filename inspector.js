@@ -143,8 +143,8 @@ function parseLogLine() {
 
     const logMatch = logLine.match(parseRegex);
 
-    if(!logMatch.hasOwnProperty('groups')) {
-        alert('Error: Failed to parse log line.')
+    if(!logMatch || !logMatch.hasOwnProperty('groups')) {
+        alert('Error: Failed to parse log line. Did you copy the line correctly?')
     }
 
     let logData = logMatch.groups;
