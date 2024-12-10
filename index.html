@@ -106,33 +106,6 @@
         <dl id="output"></dl>
     </div>
 </div>
-<script src="messageHandler.js"></script>
-<script src="inspector.js"></script>
-<script>
-    document.getElementById("parse").addEventListener("click", (e) => {
-        clearErrors();
-
-        let data = parseLogLine();
-        if(!data) {
-            raiseError('No valid log data was found.');
-            return;
-        }
-        let parentEl = document.getElementById("output");
-        parentEl.innerHTML = null;
-
-        for (const [key, value] of Object.entries(data)) {
-            let dt = document.createElement("dt");
-            dt.innerText = key;
-            let dd = document.createElement('dd');
-            let span = document.createElement('span')
-            span.innerText = value;
-            dd.appendChild(span);
-
-            parentEl.appendChild(dt);
-            parentEl.appendChild(dd);
-        }
-    });
-</script>
-
+<script src="dist/bundle.js"></script>
 </body>
 </html>
