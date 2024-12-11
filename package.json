@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "@smnirl/act-logparser": "^1.0.1"
+    "@smnirl/act-logparser": "^1.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
-    "rollup": "^4.28.1"
+    "rollup": "^4.28.1",
+    "rollup-plugin-polyfill-node": "^0.13.0"
   },
   "scripts": {
     "build": "rollup -c"
